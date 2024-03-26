@@ -49,7 +49,12 @@ similarity = st.sidebar.slider('Color Separation', 20, 100, 50, 1,
     # fig = show_palette(colors, counts,nb_colors)
 
 if painting_name == ' ':
-    st.markdown("## Select a painting on the left (you may have to open the panel if you're using a smartphone). \n ## You can then use two sliders: the number of colors to display, and the grouping of colors.")
+    st.image(Image.open('palette_img.png'))
+    st.markdown('# Discover Palette, the app which automatically extract the main colors in paintings.')
+    st.markdown("## 1)  Select a painting on the left (you may have to open the panel if you're using a smartphone).")
+    st.markdown("## 2) You can  use the two sliders: \
+                \n ### -  the number of colors to display \
+                \n ### - the nuances of the same color to be display")
 
 else:
 
