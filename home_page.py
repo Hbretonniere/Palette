@@ -36,7 +36,7 @@ list_paintings = [' ',
                   'Van-Gogh, Nuit Etoilee Au Dessus Du Rhone',
                   'Kandinsky, Composition 8']
 
-painting_name = st.sidebar.selectbox('Chose the Painting', list_paintings)
+painting_name = st.sidebar.selectbox('Choose the Painting', list_paintings)
 
 similarity_help = 'A larger number group together more similar colors, \
 allowing to display more of the color spectrum. \
