@@ -38,12 +38,11 @@ list_paintings = [' ',
 
 painting_name = st.sidebar.selectbox('Choose the Painting', list_paintings)
 
-similarity_help = 'A larger number group together more similar colors, \
-allowing to display more of the color spectrum. \
-    A lower number will show more nuance in the main colors'
+similarity_help = 'Larger number => Less nuances in the palette / more different colors\
+   \n Lower Number => More nuance in the palette'
 
 nb_colors = st.sidebar.slider('Number of Colors', 1, 10, 5, 1)
-similarity = st.sidebar.slider('Color Grouping', 20, 100, 50, 5, 
+similarity = st.sidebar.slider('Color Separation', 20, 100, 50, 1, 
                             help=similarity_help)
 # band_width = st.sidebar.slider('density', 0.1, 10., 0.5, 0.1)
 # colors, counts = find_colors(image, similarity)
@@ -55,7 +54,7 @@ if painting_name == ' ':
 else:
 
     painting, palette = compute_and_show(painting_name, nb_colors,
-                                        similarity, 5, 0.2)
+                                        similarity, 10, 0.2)
     # st.image()
     st.pyplot(painting)
     st.pyplot(palette)

@@ -60,17 +60,21 @@ def show_palette(mid_colors, counts, density_colors, nb_colors=10):
     cross[diag_indices] = 1
     secondary_diag_indices = np.diag_indices(dim_cross)[0], np.diag_indices(dim_cross)[1][::-1]
     cross[secondary_diag_indices] = 1
-    
+    # print(np.shape(mid_colors), n_colors_found, np.shape(counts))
     for i in range(1, nb_colors+1):
-        if i > n_colors_found-3:
+        # print(n_colors_found, i)
+        if i < n_colors_found:
+            ax[i-1].imshow(transfo_rgb(mid_colors[np.where(counts==sorted_count[-i])[0][0]]/255))
+        # if i > n_colors_found-2:
 
+        else:
             # ax[0, i-1].imshow(cross, cmap='Greys')
             ax[i-1].imshow(cross, cmap='Greys')
 
-        else:
+        # else:
 
             # ax[0, i-1].imshow(transfo_rgb(mid_colors[np.where(counts==sorted_count[-i])[0][0]]/255))
-            ax[i-1].imshow(transfo_rgb(mid_colors[np.where(counts==sorted_count[-i])[0][0]]/255))
+            # a
             # ax[1, i-1].imshow(transfo_rgb(density_colors[np.where(counts==sorted_count[-i])[0][0]]/255))
         # ax[0, i-1].set_xticks([])
         # ax[0, i-1].set_yticks([])
@@ -120,17 +124,18 @@ def find_colors(flat_img, similarity, band_width, show=False):
     # image = clip_black(image, 0.2)
     # low_res = lower_resolution(image, 10)
     # flat_img = low_res.reshape(low_res.shape[0]*low_res.shape[1], 3)
-    counts = np.zeros((np.shape(flat_img)[0]))
+    counts = [] #np.zeros((np.shape(flat_img)[0]))
     mid_colors = []
     density_colors = []
     pix_i = 0
 
     # loop until we have remove all the image pixels
     while(len(flat_img) > 0):
-        pix_i += 1
+
         list_sim = []
         sum_color = [0, 0, 0]
         sim_colors = []
+        counts.append(0)
         try:
             for j in range(1, len(flat_img)):
                 ''' check if the distance between the current pixel (pix_i)
@@ -184,7 +189,7 @@ def find_colors(flat_img, similarity, band_width, show=False):
             next color still present in the painting '''
             flat_img = np.delete(flat_img, list_sim, 0)
             flat_img = np.delete(flat_img, 0, 0)
-            
+            pix_i += 1
     #         print(len(flat_img))
         except IndexError:
             return mid_colors, counts, density_colors            
