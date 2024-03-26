@@ -44,8 +44,8 @@ similarity_help = 'A larger number group together more similar colors, \
 allowing to display more of the color spectrum. \
     A lower number will show more nuance in the main colors'
 
-nb_colors = st.sidebar.slider('Colors number', 1, 10, 5, 1)
-similarity = st.sidebar.slider('Similarity', 20, 100, 50, 5, 
+nb_colors = st.sidebar.slider('Number of Colors', 1, 10, 5, 1)
+similarity = st.sidebar.slider('Color Grouping', 20, 100, 50, 5, 
                                help=similarity_help)
 # band_width = st.sidebar.slider('density', 0.1, 10., 0.5, 0.1)
 # colors, counts = find_colors(image, similarity)
