@@ -28,6 +28,7 @@ list_paintings = ['Giacometti, Autoportrait',
                   'Kupka, Mme Kupka among Verticals',
                   'Monet, Les Coquelicots',
                   'Sisley, Forge à Marly Leroy',
+                  'Toulouse-Lautrec, Rousse',
                   'Van-Gogh, Nuit Etoilee',
                   'Van-Gogh, Nuit Etoilee Au Dessus Du Rhone',
                   'Kandinsky, Composition 8']
