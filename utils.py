@@ -26,7 +26,7 @@ def density_3D(points, bandwidth):
     return densities
 
 
-def compute_and_show(painting_name, nb_color=10, similarity=100,
+def compute_and_show(painting_name, nb_color=10, similarity=50,
                      degrade=10, clip=0, band_width=0.5):
     try:
         image = Image.open(f'paintings/{painting_name}.jpg')
@@ -51,6 +51,7 @@ def compute_and_show(painting_name, nb_color=10, similarity=100,
 def show_palette(mid_colors, counts, density_colors, nb_colors=10):
     fig, ax = plt.subplots(1, nb_colors)#, figsize=(15, 5))
     # fig, ax = plt.subplots(2, nb_colors)
+    # print(counts)
     sorted_count = np.sort(counts)
     n_colors_found = len(mid_colors)
     dim_cross = 24
@@ -133,9 +134,9 @@ def find_colors(flat_img, similarity, band_width, show=False):
     while(len(flat_img) > 0):
 
         list_sim = []
-        sum_color = [0, 0, 0]
+        # sum_color = [0, 0, 0]
         sim_colors = []
-        counts.append(0)
+        counts.append(1)
         try:
             for j in range(1, len(flat_img)):
                 ''' check if the distance between the current pixel (pix_i)
@@ -144,12 +145,16 @@ def find_colors(flat_img, similarity, band_width, show=False):
 
                 # if np.sum(flat_img[j]-flat_img[pix_i]) < similarity:
                 # print(flat_img[j].shape)
-                # print(flat_img[pix_i].shape) 
-                if np.linalg.norm(flat_img[j]-flat_img[pix_i]) < similarity: 
+                # print(flat_img[pix_i].shape)
+                distance = np.sqrt((flat_img[j, 0] - flat_img[pix_i, 0])**2 +
+                                   (flat_img[j, 1] - flat_img[pix_i, 1] )**2 +
+                                   (flat_img[j, 2] - flat_img[pix_i, 2])**2)
+                
+                if distance < similarity:# np.linalg.norm(flat_img[j]-flat_img[pix_i]) < similarity: 
                     ''' if the pixel is the similar, we add it to the list
                     of similar pixels '''
                     list_sim.append(j)
-                    sum_color += flat_img[j]
+                    # sum_color += flat_img[j]
                     sim_colors.append(flat_img[j])
                     counts[pix_i] += 1
        

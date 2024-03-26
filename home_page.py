@@ -42,7 +42,7 @@ similarity_help = 'Larger number => Less nuances in the palette / more different
    \n Lower Number => More nuance in the palette'
 
 nb_colors = st.sidebar.slider('Number of Colors', 1, 10, 5, 1)
-similarity = st.sidebar.slider('Color Separation', 20, 100, 50, 1, 
+similarity = st.sidebar.slider('Color Separation', 30, 100, 80, 5, 
                             help=similarity_help)
 # band_width = st.sidebar.slider('density', 0.1, 10., 0.5, 0.1)
 # colors, counts = find_colors(image, similarity)
@@ -59,7 +59,7 @@ if painting_name == ' ':
 else:
 
     painting, palette = compute_and_show(painting_name, nb_colors,
-                                        similarity, 10, 0.2)
+                                        similarity, degrade=5, clip=0.2)
     # st.image()
     st.pyplot(painting)
     st.pyplot(palette)
