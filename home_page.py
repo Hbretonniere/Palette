@@ -29,6 +29,7 @@ list_paintings = ['Giacometti, Autoportrait',
                   'Monet, Les Coquelicots',
                   'Sisley, Forge à Marly Leroy',
                   'Toulouse-Lautrec, Rousse',
+                  'Turner, The Burning of the Houses of Lords and Commons',
                   'Van-Gogh, Nuit Etoilee',
                   'Van-Gogh, Nuit Etoilee Au Dessus Du Rhone',
                   'Kandinsky, Composition 8']
