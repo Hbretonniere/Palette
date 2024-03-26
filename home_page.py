@@ -42,7 +42,7 @@ similarity_help = 'Larger number => Less nuances in the palette / more different
    \n Lower Number => More nuance in the palette'
 
 nb_colors = st.sidebar.slider('Number of Colors', 1, 10, 5, 1)
-similarity = st.sidebar.slider('Color Separation', 30, 100, 80, 5, 
+similarity = st.sidebar.slider('Color Separation', 30, 100, 50, 5, 
                             help=similarity_help)
 # band_width = st.sidebar.slider('density', 0.1, 10., 0.5, 0.1)
 # colors, counts = find_colors(image, similarity)
