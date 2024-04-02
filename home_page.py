@@ -8,7 +8,7 @@ import numpy as np
 st.set_page_config(
     page_title="Home page",
     page_icon="👋",
-    layout="centered")
+    layout="wide")
 
 # st.write("## Welcome to the Palette")
 
@@ -35,7 +35,7 @@ list_paintings = [' ',
                   'Van-Gogh, Nuit Etoilee',
                   'Van-Gogh, Nuit Etoilee Au Dessus Du Rhone',
                   'Kandinsky, Composition 8']
-
+animate = st.sidebar.checkbox(label='Animate')
 painting_name = st.sidebar.selectbox('Choose the Painting', list_paintings)
 
 similarity_help = 'Larger number => Less nuances in the palette / more different colors\
@@ -44,6 +44,7 @@ similarity_help = 'Larger number => Less nuances in the palette / more different
 nb_colors = st.sidebar.slider('Number of Colors', 1, 10, 5, 1)
 similarity = st.sidebar.slider('Color Separation', 30, 100, 50, 5, 
                             help=similarity_help)
+
 # band_width = st.sidebar.slider('density', 0.1, 10., 0.5, 0.1)
 # colors, counts = find_colors(image, similarity)
     # fig = show_palette(colors, counts,nb_colors)
@@ -59,7 +60,11 @@ if painting_name == ' ':
 else:
 
     painting, palette = compute_and_show(painting_name, nb_colors,
-                                        similarity, degrade=5, clip=0.2)
+                                        similarity, degrade=10, clip=0.2,
+                                        animate=animate)
     # st.image()
+    # ani = animation.FuncAnimation(...)
+    # ani.save('file_name.gif', writer=PillowWriter())
+    # st.image('file_name.gif')
     st.pyplot(painting)
     st.pyplot(palette)
