@@ -35,14 +35,14 @@ list_paintings = [' ',
                   'Van-Gogh, Nuit Etoilee',
                   'Van-Gogh, Nuit Etoilee Au Dessus Du Rhone',
                   'Kandinsky, Composition 8']
-animate = st.sidebar.checkbox(label='Animate')
+animate = False #st.sidebar.checkbox(label='Animate')
 painting_name = st.sidebar.selectbox('Choose the Painting', list_paintings)
 
 similarity_help = 'Larger number => Less nuances in the palette / more different colors\
    \n Lower Number => More nuance in the palette'
 
 nb_colors = st.sidebar.slider('Number of Colors', 1, 10, 5, 1)
-similarity = st.sidebar.slider('Color Separation', 30, 100, 50, 5, 
+similarity = st.sidebar.slider('Color Separation', 60, 120, 80, 5, 
                             help=similarity_help)
 
 # band_width = st.sidebar.slider('density', 0.1, 10., 0.5, 0.1)
@@ -51,6 +51,7 @@ similarity = st.sidebar.slider('Color Separation', 30, 100, 50, 5,
 
 if painting_name == ' ':
     st.image(Image.open('palette_img.png'))
+    st.markdown('Project still in development')
     st.markdown('# Discover Palette, the app which automatically extract the main colors in paintings.')
     st.markdown("## 1)  Select a painting on the left (you may have to open the panel if you're using a smartphone).")
     st.markdown("## 2) You can  use the two sliders: \
